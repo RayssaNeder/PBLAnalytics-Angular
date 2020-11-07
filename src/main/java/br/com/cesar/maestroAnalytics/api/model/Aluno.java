@@ -3,7 +3,9 @@ package br.com.cesar.maestroAnalytics.api.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -33,9 +36,9 @@ public class Aluno {
 	
 	private boolean ativo;
 	
-	@ManyToMany
-	@JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "aluno_codigo"), inverseJoinColumns = @JoinColumn(name = "turma_id"))
-	private List<Turma> usuarios = new ArrayList<>();
+	 @JsonBackReference("alunos")
+     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	private List<Turma> turmas = new ArrayList<>();
 	
 	
 	public Long getCodigo() {
@@ -56,13 +59,14 @@ public class Aluno {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public List<Turma> getUsuarios() {
-		return usuarios;
-	}
-	public void setUsuarios(List<Turma> usuarios) {
-		this.usuarios = usuarios;
-	}
 	
+	
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 	@JsonIgnore
 	@Transient
 	public boolean isInativo() {
