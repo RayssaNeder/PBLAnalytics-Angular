@@ -1,12 +1,11 @@
-package com.example.algamoney.api;
+package com.example.maestroAnalytics.api;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class MaestroAnalyticsApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 

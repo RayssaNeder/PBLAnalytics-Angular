@@ -1,11 +1,11 @@
-package br.com.cesar.maestroAnalytics.repository.aluno;
+package br.com.cesar.maestroAnalytics.api.repository.aluno;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.cesar.maestroAnalytics.model.Aluno;
+import br.com.cesar.maestroAnalytics.api.model.Aluno;
 
 
 public class AlunoRepositoryImpl implements AlunoRepositoryQuery {

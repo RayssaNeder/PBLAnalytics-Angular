@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnalytics.model;
+package br.com.cesar.maestroAnalytics.api.model;
 
 public enum Perfil {
 	ADM("administrador"),

@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnalytics.model;
+package br.com.cesar.maestroAnalytics.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,9 @@ import javax.validation.constraints.Size;
 @Table(name = "curso")
 public class Curso {
 	@Id
-	private Long codigo;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+
 	
 	@NotNull
 	@Size(min = 3, max = 20)

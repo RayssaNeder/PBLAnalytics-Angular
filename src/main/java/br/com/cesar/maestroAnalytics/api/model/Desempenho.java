@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnalytics.model;
+package br.com.cesar.maestroAnalytics.api.model;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,26 +10,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "desempenho")
+//@Entity
+//@Table(name = "desempenho")
 public class Desempenho {
 	
-	@Id
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToMany
+	
 	@NotNull
 	private Aluno aluno;
 	@NotNull
-	@OneToMany
 	private Curso curso;
-	@OneToMany
 	@NotNull
 	private Disciplina disciplina;
-	@OneToMany
+	
 	@NotNull
 	private Professor professor;
-	@OneToMany
+	
 	@NotNull
 	private Turma turma;
 	@Enumerated(EnumType.STRING)
@@ -106,4 +104,5 @@ public class Desempenho {
 	
 	
 
+}*/
 }
