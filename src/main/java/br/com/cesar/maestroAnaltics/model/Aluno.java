@@ -27,7 +27,7 @@ public class Aluno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	@NotNull
-	@Size(min = 3, max = 20)
+	@Size(min = 3, max = 50)
 	private String nome;
 	
 	private boolean ativo;
