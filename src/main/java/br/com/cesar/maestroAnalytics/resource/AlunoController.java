@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnaltics.resource;
+package br.com.cesar.maestroAnalytics.resource;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cesar.maestroAnaltics.model.Aluno;
-import br.com.cesar.maestroAnaltics.repository.AlunoRepository;
 import br.com.cesar.maestroAnalytics.api.event.ResourceCreatedEvent;
+import br.com.cesar.maestroAnalytics.model.Aluno;
+import br.com.cesar.maestroAnalytics.repository.AlunoRepository;
 
 
 @RestController

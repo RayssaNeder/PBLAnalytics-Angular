@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnaltics.model;
+package br.com.cesar.maestroAnalytics.model;
 
 import java.util.ArrayList;
 import java.util.List;

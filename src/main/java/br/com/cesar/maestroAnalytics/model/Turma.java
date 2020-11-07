@@ -1,4 +1,4 @@
-package br.com.cesar.maestroAnaltics.model;
+package br.com.cesar.maestroAnalytics.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
