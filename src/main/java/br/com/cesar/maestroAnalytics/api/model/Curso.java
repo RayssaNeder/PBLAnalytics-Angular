@@ -31,8 +31,50 @@ public class Curso {
 	@ManyToMany
 	@JoinTable(name = "curso_disciplina", joinColumns = @JoinColumn(name = "curso_codigo"), inverseJoinColumns = @JoinColumn(name = "disciplina_codigo"))
 	private List<Turma> disciplinas = new ArrayList<>();
+	
+	 @OneToMany(mappedBy = "curso")
+	 private List<Turma> turmaList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Turma> turmas;
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Turma> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Turma> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+
+	public List<Turma> getTurmaList() {
+		return turmaList;
+	}
+
+	public void setTurmaList(List<Turma> turmaList) {
+		this.turmaList = turmaList;
+	}
+
+	
+
+	
+
+	
+	 
+	 
+	
+	
 
 }

@@ -38,7 +38,8 @@ public class Aluno {
 	
 	 @JsonBackReference("alunos")
      @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	private List<Turma> turmas = new ArrayList<>();
+	 @JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "aluno_codigo"), inverseJoinColumns = @JoinColumn(name = "turma_codigo"))
+	private List<Turma> turmaList = new ArrayList<>();
 	
 	
 	public Long getCodigo() {
@@ -61,11 +62,12 @@ public class Aluno {
 	}
 	
 	
-	public List<Turma> getTurmas() {
-		return turmas;
+	
+	public List<Turma> getTurmaList() {
+		return turmaList;
 	}
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
+	public void setTurmaList(List<Turma> turmaList) {
+		this.turmaList = turmaList;
 	}
 	@JsonIgnore
 	@Transient

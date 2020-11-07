@@ -18,9 +18,9 @@ CREATE TABLE turma (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE aluno_turma (
-	codigo_aluno BIGINT(20)NOT NULL,
-	codigo_turma BIGINT(20)NOT NULL,
-    PRIMARY KEY (codigo_aluno, codigo_turma),
-    FOREIGN KEY (codigo_aluno) REFERENCES aluno(codigo),
-    FOREIGN KEY (codigo_turma) REFERENCES turma(codigo)
+	aluno_codigo BIGINT(20)NOT NULL,
+	turma_codigo BIGINT(20)NOT NULL,
+    PRIMARY KEY (aluno_codigo, turma_codigo),
+    FOREIGN KEY (aluno_codigo) REFERENCES aluno(codigo),
+    FOREIGN KEY (turma_codigo) REFERENCES turma(codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

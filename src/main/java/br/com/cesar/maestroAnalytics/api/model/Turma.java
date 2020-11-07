@@ -32,14 +32,17 @@ public class Turma {
 	@Size(min = 3, max = 50)
 	private String nome;
 
-	@ManyToOne
-	@JoinColumn(name = "turma_id", nullable = false)
-	private Curso curso;
+	
+	  @ManyToOne
+	  @NotNull
+	  @JoinColumn(name = "codigo_curso", nullable = false) 
+	  private Curso curso;
+	 
 	
 	
-	 @JsonBackReference("turmas")
+	 @JsonBackReference("turma")
      @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	@JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "aluno_codigo"), inverseJoinColumns = @JoinColumn(name = "turma_codigo"))
+	 @JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "aluno_codigo"), inverseJoinColumns = @JoinColumn(name = "turma_codigo"))
 	private List<Aluno> alunos = new ArrayList<>();
 
 
@@ -63,14 +66,12 @@ public class Turma {
 	}
 
 
-	public Curso getCurso() {
-		return curso;
-	}
-
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
+	
+	  public Curso getCurso() { return curso; }
+	  
+	  
+	  public void setCurso(Curso curso) { this.curso = curso; }
+	 
 
 
 	public List<Aluno> getAlunos() {
