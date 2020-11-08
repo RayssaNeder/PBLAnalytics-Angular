@@ -1,5 +1,7 @@
 package br.com.cesar.maestroAnalytics.api.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +14,12 @@ import javax.validation.constraints.NotNull;
 
 //@Entity
 //@Table(name = "desempenho")
-public class Desempenho {
+public class Desempenho implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	/*@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.cesar.maestroAnalytics.api.event.ResourceCreatedEvent;
 import br.com.cesar.maestroAnalytics.api.model.Aluno;
 import br.com.cesar.maestroAnalytics.api.repository.AlunoRepository;
+import br.com.cesar.maestroAnalytics.api.service.AlunoService;
 
 
 @RestController
@@ -30,6 +31,9 @@ public class AlunoController {
 	@Autowired
 	private AlunoRepository alunosRepository;
 	
+	@Autowired
+	private AlunoService alunoService;
+	
 	@GetMapping
 	public List<Aluno> listar(){
 		return alunosRepository.findAll();
@@ -38,7 +42,7 @@ public class AlunoController {
 	
 	  @PostMapping 
 	  public ResponseEntity<Aluno> criar(@Valid @RequestBody Aluno aluno, HttpServletResponse response){ 
-		  Aluno alunoSalvo =   alunosRepository.save(aluno);
+		  Aluno alunoSalvo =   alunoService.save(aluno);
 	  
 	  publisher.publishEvent(new ResourceCreatedEvent(this, response,
 	   alunoSalvo.getCodigo()));

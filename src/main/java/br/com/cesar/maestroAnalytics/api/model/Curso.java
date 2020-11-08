@@ -1,5 +1,6 @@
 package br.com.cesar.maestroAnalytics.api.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,19 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "curso")
-public class Curso {
+public class Curso implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
 	
-	@NotNull
+	//@NotNull
 	@Size(min = 3, max = 20)
 	private String nome;
 	

@@ -1,5 +1,6 @@
 package br.com.cesar.maestroAnalytics.api.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -11,10 +12,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "avaliacao")
-public class Avaliacao {
+//@Table(name = "avaliacao")
+public class Avaliacao implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private Long codigo;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

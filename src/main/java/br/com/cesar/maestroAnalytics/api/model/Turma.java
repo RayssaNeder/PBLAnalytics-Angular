@@ -1,5 +1,6 @@
 package br.com.cesar.maestroAnalytics.api.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,26 +22,28 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "turma")
-public class Turma {
+public class Turma implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
-	
-	@NotNull
-	@Size(min = 3, max = 50)
+		
+	//@NotNull
+	//@Size(min = 3, max = 50)
 	private String nome;
-
 	
-	  @ManyToOne
-	  @NotNull
-	  @JoinColumn(name = "codigo_curso", nullable = false) 
-	  private Curso curso;
-	 
+	 @ManyToOne
+	 @NotNull
+	 @JoinColumn(name = "codigo_curso", nullable = false) 
+	 private Curso curso;	
 	
-	
-	 @JsonBackReference("turma")
+	 @JsonBackReference("turmaList")
      @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
 	 @JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "aluno_codigo"), inverseJoinColumns = @JoinColumn(name = "turma_codigo"))
 	private List<Aluno> alunos = new ArrayList<>();
@@ -64,7 +67,6 @@ public class Turma {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	
 	  public Curso getCurso() { return curso; }
