@@ -69,6 +69,9 @@ public class Avaliacao implements Serializable {
 	public void setMatricula(Matricula matricula) {
 		this.matricula = matricula;
 	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
