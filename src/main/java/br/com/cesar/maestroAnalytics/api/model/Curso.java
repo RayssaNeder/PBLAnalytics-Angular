@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "curso")
 public class Curso implements Serializable {
@@ -25,22 +28,18 @@ public class Curso implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	
-	//@NotNull
+	@NotNull
 	@Size(min = 3, max = 20)
 	private String nome;
-	
-	@ManyToMany
-	@JoinTable(name = "curso_disciplina", joinColumns = @JoinColumn(name = "curso_codigo"), inverseJoinColumns = @JoinColumn(name = "disciplina_codigo"))
-	private List<Turma> disciplinas = new ArrayList<>();
-	
-	 @OneToMany(mappedBy = "curso")
-	 private List<Turma> turmaList = new ArrayList<>();
+
+	@JsonBackReference("disciplinas")
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	@JoinTable(name = "curso_disciplina", joinColumns = @JoinColumn(name = "disciplina_codigo"), inverseJoinColumns = @JoinColumn(name = "curso_codigo"))
+	private List<Disciplina> disciplinas = new ArrayList<>();
 
 	public Long getCodigo() {
 		return codigo;
@@ -58,30 +57,12 @@ public class Curso implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Turma> getDisciplinas() {
+	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Turma> disciplinas) {
+	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
-
-	public List<Turma> getTurmaList() {
-		return turmaList;
-	}
-
-	public void setTurmaList(List<Turma> turmaList) {
-		this.turmaList = turmaList;
-	}
-
-	
-
-	
-
-	
-	 
-	 
-	
-	
 
 }
