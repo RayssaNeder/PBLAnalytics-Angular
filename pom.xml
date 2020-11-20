@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.algaworks.algamoney-api</groupId>
 	<artifactId>MaestroAnalytics</artifactId>
@@ -14,12 +15,12 @@
 	<name>MaestroAnalytics</name>
 	<description>Demo project for Spring Boot</description>
 
-		<properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Já inclui o bean validation -->
 		<dependency>
@@ -38,20 +39,20 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!--driver mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- Migracoes - Flyway -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -63,29 +64,75 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- Hibernate Java 8 Support - Para que o Hibernate consiga converter LocalData -->
+		<!-- Hibernate Java 8 Support - Para que o Hibernate consiga converter 
+			LocalData -->
 		<dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-java8</artifactId>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
 		</dependency>
-		
+
 		<!-- Suporte do Jackson para as datas do Java 8 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>			
+			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
 		</dependency>
-		
+
 		<!-- Geração do metamodel -->
 		<dependency>
-			  <groupId>org.hibernate</groupId>
-			  <artifactId>hibernate-jpamodelgen</artifactId>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.23.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.23.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-drive</artifactId>
+			<version>v3-rev110-1.23.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.6</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.1</version>
+</dependency>
+
+		
+		
+		<dependency>
+  <groupId>com.google.api-client</groupId>
+  <artifactId>google-api-client-servlet</artifactId>
+  <version>1.30.4</version>
+</dependency>
+
+
 	</dependencies>
 
 	<build>
