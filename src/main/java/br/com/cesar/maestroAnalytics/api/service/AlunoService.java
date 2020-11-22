@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cesar.maestroAnalytics.api.model.Aluno;
-import br.com.cesar.maestroAnalytics.api.model.Cidade;
-import br.com.cesar.maestroAnalytics.api.model.Estado;
 import br.com.cesar.maestroAnalytics.api.repository.AlunoRepository;
 import br.com.cesar.maestroAnalytics.api.repository.CidadeRepository;
 import br.com.cesar.maestroAnalytics.api.repository.EstadoRepository;

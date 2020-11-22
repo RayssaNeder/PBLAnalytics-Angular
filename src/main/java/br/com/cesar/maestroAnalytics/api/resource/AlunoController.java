@@ -20,34 +20,31 @@ import br.com.cesar.maestroAnalytics.api.model.Aluno;
 import br.com.cesar.maestroAnalytics.api.repository.AlunoRepository;
 import br.com.cesar.maestroAnalytics.api.service.AlunoService;
 
-
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
-	
+
 	@Autowired
 	private ApplicationEventPublisher publisher;
-	
+
 	@Autowired
 	private AlunoRepository alunosRepository;
-	
+
 	@Autowired
 	private AlunoService alunoService;
-	
+
 	@GetMapping
-	public List<Aluno> listar(){
+	public List<Aluno> listar() {
 		return alunosRepository.findAll();
 	}
-	
-	
-	  @PostMapping 
-	  public ResponseEntity<Aluno> criar(@Valid @RequestBody Aluno aluno, HttpServletResponse response){ 
-		  Aluno alunoSalvo =   alunoService.save(aluno);
-	  
-	  publisher.publishEvent(new ResourceCreatedEvent(this, response,
-	   alunoSalvo.getCodigo()));
-	  
-	  return ResponseEntity.status(HttpStatus.CREATED).body(alunoSalvo); }
-	 
+
+	@PostMapping
+	public ResponseEntity<Aluno> criar(@Valid @RequestBody Aluno aluno, HttpServletResponse response) {
+		Aluno alunoSalvo = alunoService.save(aluno);
+
+		publisher.publishEvent(new ResourceCreatedEvent(this, response, alunoSalvo.getCodigo()));
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(alunoSalvo);
+	}
 
 }

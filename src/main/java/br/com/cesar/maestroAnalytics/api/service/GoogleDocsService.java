@@ -34,9 +34,16 @@ public class GoogleDocsService {
 				googleDocsModel.setCodigo(file.getId());
 				googleDocsModel.setName(file.getName());
 				googleDocsModel.setDt(file.getCreatedTime());
-				googleDocsModel.setDescricao(file.getDescription());
+				googleDocsModel.setDescription(file.getDescription());
 				googleDocsModel.setPrettyStr(file.toPrettyString());
 				googleDocsModel.setMimeType(file.getMimeType());
+				googleDocsModel.setProperties(file.getAppProperties());
+				googleDocsModel.setFileExtension(file.getFileExtension());
+				googleDocsModel.setHeadRevisionId(file.getHeadRevisionId());
+				googleDocsModel.setLastModifyingUser(file.getLastModifyingUser());
+				googleDocsModel.setMd5Checksum(file.getMd5Checksum());
+				googleDocsModel.setKind(file.getKind());
+				
 				
 				googleDocsModelList.add(googleDocsModel);
 			}

@@ -115,10 +115,9 @@ public class DriveQuickstartUpdated {
 			System.out.println("No files found.");
 			return null;
 		}
-
 		
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

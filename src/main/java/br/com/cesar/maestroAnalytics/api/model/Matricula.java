@@ -35,8 +35,9 @@ public class Matricula implements Serializable {
 	private Aluno aluno;
 	private Turma turma;
 	private Situacao situacao;
-	@OneToMany(mappedBy = "matricula", cascade = CascadeType.ALL) 
-	private List<Avaliacao> avaliacoes = new ArrayList<>();
+//	@OneToMany(mappedBy = "matricula", cascade = CascadeType.ALL) 
+//	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -85,12 +86,7 @@ public class Matricula implements Serializable {
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
-	}
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

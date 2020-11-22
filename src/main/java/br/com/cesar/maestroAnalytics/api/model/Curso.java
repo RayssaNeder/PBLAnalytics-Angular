@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -35,6 +36,17 @@ public class Curso implements Serializable {
 	@NotNull
 	@Size(min = 3, max = 20)
 	private String nome;
+	
+	@NotNull
+	@Size(min = 3, max = 20)
+	private String sku;
+	@ManyToOne
+	@JoinColumn(name = "inst_id", nullable = false)
+	private Instituicao instituicao;
+	
+	private Grau grau;
+	
+	private Modalidade modalidade;
 
 	@JsonBackReference("disciplinas")
 	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
@@ -63,6 +75,42 @@ public class Curso implements Serializable {
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+	
+	
+
+	public String getSku() {
+		return sku;
+	}
+
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+	
+	
+
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+
+	public Grau getGrau() {
+		return grau;
+	}
+
+	public void setGrau(Grau grau) {
+		this.grau = grau;
+	}
+
+	public Modalidade getModalidade() {
+		return modalidade;
+	}
+
+	public void setModalidade(Modalidade modalidade) {
+		this.modalidade = modalidade;
 	}
 
 	@Override
