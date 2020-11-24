@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,11 +43,11 @@ public class Curso implements Serializable {
 	@Size(min = 3, max = 20)
 	private String sku;
 	@ManyToOne
-	@JoinColumn(name = "inst_id", nullable = false)
+	@JoinColumn(name = "codigo_inst", nullable = false)
 	private Instituicao instituicao;
-	
+	@Enumerated(EnumType.STRING)
 	private Grau grau;
-	
+	@Enumerated(EnumType.STRING)
 	private Modalidade modalidade;
 
 	@JsonBackReference("disciplinas")
