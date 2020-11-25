@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 
 import {AccordionModule} from 'primeng/accordion';
 import {MenuItem} from 'primeng/api';
-
-import {TabViewModule} from 'primeng/tabview';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,9 @@ import {TabViewModule} from 'primeng/tabview';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TabViewModule,
     AccordionModule,
+    InputTextModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
