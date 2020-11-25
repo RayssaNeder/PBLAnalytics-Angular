@@ -4,13 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {AccordionModule} from 'primeng/accordion';
+import {MenuItem} from 'primeng/api';
+
+import {TabViewModule} from 'primeng/tabview';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TabViewModule,
+    AccordionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
