@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +37,7 @@ public class CursoController {
 	@Autowired
 	private CursoRepository cursoRepository;
 	
+	//@CrossOrigin(maxAge = 10, origins = {"http://localhost:8000"}) -- não vou adicionar a origem cruzada via anotação porque o spring não funciona bem com o oauth2. Em vez disso vou criar um filtro para o CORS
 	@GetMapping
 	public List<Curso> listar(){
 		return cursoRepository.findAll();
