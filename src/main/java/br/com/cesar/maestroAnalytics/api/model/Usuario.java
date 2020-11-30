@@ -1,53 +1,84 @@
 package br.com.cesar.maestroAnalytics.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-//@Table(name = "usuario")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Long codigo;
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-//	@NotNull
-//	@Size(min = 3, max = 20)
-	private String nome;
-	@Enumerated(EnumType.STRING)
+
 	@NotNull
-	private Perfil perfil;
+	@Size(min = 3, max = 20)
+
+	private String nome;
+
+	private String email;
+	private String senha;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns =  @JoinColumn(name = "codigo_permissao"))
+	private List<Permissao> permissoes;
+
 	public Long getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Perfil getPerfil() {
-		return perfil;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,6 +86,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -71,7 +103,5 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }
