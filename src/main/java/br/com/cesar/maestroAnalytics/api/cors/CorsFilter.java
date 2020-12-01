@@ -11,16 +11,22 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import br.com.cesar.maestroAnalytics.api.config.property.PblAnalyticsProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 	
-	private String originPermitida = "http://localhost:8092"; //TODO: Configurar para diferentes ambientes
-
+	@Autowired //TODO: Configurar para diferentes ambientes
+	private PblAnalyticsProperty pblAnalyticsProperty;
+	private String originPermitida = pblAnalyticsProperty.getOriginPermitida();
+	
+	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
