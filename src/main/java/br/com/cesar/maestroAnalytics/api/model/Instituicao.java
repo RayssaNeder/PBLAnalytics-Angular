@@ -30,8 +30,11 @@ public class Instituicao implements Serializable {
 	@NotNull
 	@Size(min = 3, max = 20)
 	private String sku;
-	@OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL) 
-	private List<Curso> cursos;
+
+	/*
+	 * @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL) private
+	 * List<Curso> cursos;
+	 */
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -50,12 +53,10 @@ public class Instituicao implements Serializable {
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
-	}
+	/*
+	 * public List<Curso> getCursos() { return cursos; } public void
+	 * setCursos(List<Curso> cursos) { this.cursos = cursos; }
+	 */
 	
 	
 	
