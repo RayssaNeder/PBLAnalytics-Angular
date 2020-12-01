@@ -150,6 +150,12 @@
     		<artifactId>spring-security-jwt</artifactId>
 		</dependency>
 
+	<!-- Para poder utilizar a anotação @ConfigurationProperties("pblAnalytics") para criação de profiles dev e prod-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
