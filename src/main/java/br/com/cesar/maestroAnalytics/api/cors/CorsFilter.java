@@ -24,7 +24,6 @@ public class CorsFilter implements Filter {
 	
 	@Autowired //TODO: Configurar para diferentes ambientes
 	private PblAnalyticsProperty pblAnalyticsProperty;
-	private String originPermitida = pblAnalyticsProperty.getOriginPermitida();
 	
 	
 	@Override
@@ -40,10 +39,10 @@ public class CorsFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
-		resp.setHeader("Access-Control-Allow-Origin", originPermitida);
+		resp.setHeader("Access-Control-Allow-Origin", pblAnalyticsProperty.getOriginPermitida());
 		resp.setHeader("Access-Control-Allow-Credentials", "true");
 
-		if ("OPTIONS".equals(req.getMethod()) && originPermitida.equals(req.getHeader("Origin"))) {
+		if ("OPTIONS".equals(req.getMethod()) && pblAnalyticsProperty.getOriginPermitida().equals(req.getHeader("Origin"))) {
 			resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 			resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 			resp.setHeader("Access-Control-Max-Age", "3600");
