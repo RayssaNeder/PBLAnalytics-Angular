@@ -26,9 +26,11 @@ public class CursoService {
 		Optional<Instituicao> instituicaoExistente = instituicaoRepository.findByCodigo(curso.getInstituicao().getCodigo());
 		
 		  if(!instituicaoExistente.isPresent()) {
-			  ///lança exceção 
+			  System.out.println("NÃO EXISTE INSTITUICAO COM O CODIGO " + curso.getInstituicao().getCodigo());
 		  }
 		 
+		  System.out.println("INSTITUICAO " + curso.getInstituicao().getCodigo());
+		  
 		curso.setInstituicao(instituicaoExistente.get());
 		
 		curso = cursoRepository.save(curso);
