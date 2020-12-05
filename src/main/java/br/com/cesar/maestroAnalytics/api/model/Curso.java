@@ -44,7 +44,7 @@ public class Curso implements Serializable {
 	private String sku;
 	@ManyToOne
 	@JoinColumn(name = "codigo_inst", nullable = false)
-	private Instituicao instituicao;
+	private Instituicao instituicao = new Instituicao();
 	@Enumerated(EnumType.STRING)
 	private Grau grau;
 	@Enumerated(EnumType.STRING)
