@@ -9,6 +9,8 @@ import {MenuItem} from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TableModule } from 'primeng/table';
     AccordionModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

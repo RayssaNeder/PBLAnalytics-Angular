@@ -1,3 +1,5 @@
+
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 import { AccordionModule } from 'primeng/accordion'; // accordion and accordion tab
@@ -12,12 +14,9 @@ import { TabViewModule } from 'primeng/tabview';
 })
 export class AppComponent {
   title = 'pblAnalytics-ui';
-  cursos = [
-    { nome: 'Calculo Integral I', sku: 'CC04', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral II', sku: 'CC05', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral III', sku: 'CC06', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral I', sku: 'CC07', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'},
-    { nome: 'Calculo Integral II', sku: 'CC08', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'},
-    { nome: 'Calculo Integral III', sku: 'CC09', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'}
-  ];
+  cursos = [];
+
+  constructor(http: HttpClient) {
+    console.log(http);
+}
 }
