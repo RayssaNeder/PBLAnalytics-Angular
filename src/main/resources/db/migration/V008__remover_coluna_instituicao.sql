@@ -1,0 +1,1 @@
+alter table curso drop instituicao;
