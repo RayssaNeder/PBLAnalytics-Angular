@@ -23,7 +23,7 @@
 
   <div class="p-col">
     <div class="p-col-12">
-      <p-table [value]="cursos" [paginator]="true" [rows]="3">
+      <p-table [value]="cursos" [paginator]="true" [rows]="3" [responsive]="true">
         <ng-template pTemplate="header">
             <tr>
                 <th class="col-data-header">sku</th>
@@ -36,11 +36,11 @@
         </ng-template>
         <ng-template pTemplate="body" let-curso>
             <tr>
-                <td>{{curso.sku}}</td>
-                <td>{{curso.nome}}</td>
-                <td class="col-data-content">{{curso.instituicao}}</td>
-                <td class="col-data-content">{{curso.grau}}</td>
-                <td class="col-data-content" [ngStyle]="{color: curso.modalidade === 'À Distância' ? 'red' : 'blue'}">{{curso.modalidade}}</td>
+                <td class="p-column-title">{{curso.sku}}</td>
+                <td class="p-column-title">{{curso.nome}}</td>
+                <td class="p-column-title">{{curso.instituicao}}</td>
+                <td class="p-column-title">{{curso.grau}}</td>
+                <td class="p-column-title" [ngStyle]="{color: curso.modalidade === 'À Distância' ? 'red' : 'blue'}">{{curso.modalidade}}</td>
                 <td class="col-acoes">
                   <a pButton  class="btn-trash" pTooltip="editar" tooltipPosition="top" icon="pi pi-pencil"></a>
                   <button pButton icon="pi pi-trash" pTooltip="editar" tooltipPosition="top"></button>
