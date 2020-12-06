@@ -11,12 +11,14 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'primeng/tooltip';
+import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CursosPesquisaComponent
   ],
   imports: [
     BrowserModule,
