@@ -11,8 +11,11 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'primeng/tooltip';
-import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.component';
+import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CursoFormComponent } from './curso/curso-form/curso-form.component';
+
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     AppComponent,
     CursosPesquisaComponent,
-    NavbarComponent
+    NavbarComponent,
+    CursoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +35,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     TableModule,
     BrowserModule,
     HttpClientModule,
-    TooltipModule
+    TooltipModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

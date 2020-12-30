@@ -2,10 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
-import { AccordionModule } from 'primeng/accordion'; // accordion and accordion tab
-import { MenuItem } from 'primeng/api';              // api
 
-import { TabViewModule } from 'primeng/tabview';
 
 
 @Component({
@@ -15,7 +12,5 @@ import { TabViewModule } from 'primeng/tabview';
 })
 export class AppComponent {
 
-  constructor(http: HttpClient) {
-    console.log(http);
-}
+
 }
