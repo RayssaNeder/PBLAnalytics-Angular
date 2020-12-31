@@ -1,6 +1,14 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+
+class Disciplina{
+  codigo: string;
+  nome: string;
+  curso: string;
+}
+
+
 @Component({
   selector: 'app-disciplina-form',
   templateUrl: './disciplina-form.component.html',
@@ -8,11 +16,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisciplinaFormComponent{
 
+  disciplina: Disciplina = new Disciplina();
   cursos = ['Ciências da computalção', 'Engenharia Civil', 'Ciências Contábeis'];
 
   salvar(form: NgForm){
-    console.log(form);
-    console.log(form.value.nome);
+    //this.disciplina.codigo = form.value.codigo;
+    //this.disciplina.nome = form.value.nome;
+    //this.disciplina.curso = form.value.curso
+    console.log(form.value);
+    console.log(this.disciplina);
   }
 
 }
