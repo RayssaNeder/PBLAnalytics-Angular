@@ -14,8 +14,10 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CursoFormComponent } from './curso/curso-form/curso-form.component';
+import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
 
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -24,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     CursosPesquisaComponent,
     NavbarComponent,
-    CursoFormComponent
+    CursoFormComponent,
+    DisciplinaFormComponent
+
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     TooltipModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
