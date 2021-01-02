@@ -11,6 +11,6 @@
       <input type="text" class="form-control" name="nome" ngModel>
     </div>
 
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary" [disabled]=!cursoForm.valid>Salvar</button>
   </form>
 </div>
