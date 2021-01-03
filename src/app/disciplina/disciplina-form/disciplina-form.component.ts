@@ -25,6 +25,8 @@ export class DisciplinaFormComponent{
     //this.disciplina.curso = form.value.curso
     console.log(form.value);
     console.log(this.disciplina);
+
+    form.reset({curso: '' });
   }
 
 }
