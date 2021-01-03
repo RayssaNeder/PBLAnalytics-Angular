@@ -14,8 +14,8 @@
       <input type="text" class="form-control" name="codigo"
       [(ngModel)] = disciplina.codigo required minlength="7" #codigo="ngModel">
 
-      <div *ngIf="codigo.hasError('required')">Informe um código</div>
-      <div *ngIf="codigo.hasError('minlength')">O código de ter 7 dígitos</div>
+      <div *ngIf="codigo.hasError('required') && codigo.dirty">Informe um código</div>
+      <div *ngIf="codigo.hasError('minlength') && codigo.dirty">O código de ter 7 dígitos</div>
 
     </div>
 
@@ -24,8 +24,8 @@
       <input type="text" class="form-control" name="nome"
       [(ngModel)] = disciplina.nome required minlength="3" #nome="ngModel">
 
-      <div *ngIf="nome.hasError('required')">Informe um nome</div>
-      <div *ngIf="nome.hasError('minlength')">O código de ter no mínimo 3 dígitos</div>
+      <div *ngIf="nome.hasError('required') && nome.dirty">Informe um nome</div>
+      <div *ngIf="nome.hasError('minlength') && nome.dirty">O código de ter no mínimo 3 dígitos</div>
 
     </div>
 
@@ -38,7 +38,7 @@
 
       </select>
 
-      <div *ngIf="curso.hasError('required')">Selecione um cuso</div>
+      <div *ngIf="curso.hasError('required') && curso.dirty">Selecione um cuso</div>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]=!disciplinaForm.valid>Salvar</button>
