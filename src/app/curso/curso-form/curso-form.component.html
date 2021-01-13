@@ -1,16 +1,52 @@
 <div class="container">
+
+
+  <div *ngIf="cursoForm.invalid" class="alert alert-danger">
+    preencha todos os campos corretamente
+  </div>
+
+
   <form #cursoForm="ngForm" (ngSubmit)="salvar(cursoForm)">
 
-    <div class="form-group">
-      <label class="form-control-label">Código</label>
-      <input type="text" class="form-control" name="codigo" ngModel>
-    </div>
+    <div class="p-grid">
 
-    <div class="form-group">
-      <label class="form-control-label">Nome</label>
-      <input type="text" class="form-control" name="nome" ngModel>
-    </div>
+      <div class="p-col-12 ">
+        <h1>Novo curso</h1>
+      </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]=!cursoForm.valid>Salvar</button>
+      <div class="p-col-12 p-md-3 p-fluid">
+        <label>Código</label>
+        <input pInputText type="text" name="codigo"
+        [(ngModel)] = curso.sku required minlength="7" #codigo="ngModel"
+        [class.is-invalid]="codigo.invalid && codigo.touched">
+
+        <div *ngIf="codigo.hasError('required') && codigo.touched" class="invalid-feedback">Informe um código</div>
+        <div *ngIf="codigo.hasError('minlength') && codigo.touched"  class="invalid-feedback">O código de ter 7 dígitos</div>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+        [(ngModel)] = curso.nome required minlength="3" #nome="ngModel"
+        [class.is-invalid]="nome.invalid && nome.touched">
+
+        <div *ngIf="nome.hasError('required') && nome.touched" class="invalid-feedback">Informe um nome</div>
+        <div *ngIf="nome.hasError('minlength') && nome.touched" class="invalid-feedback">O nome de ter no mínimo 3 dígitos</div>
+      </div>
+
+      <div class="p-col-12 p-md-8 p-fluid">
+        <label>Modalidade {{ curso.modalidade }}</label>
+        <p-dropdown [options]="graus" placeholder="Selecione"
+           #modalidade></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-8 p-fluid">
+        <label>Grau {{ curso.grau }}</label>
+        <p-dropdown [options]="graus" placeholder="Selecione"
+           #grau></p-dropdown>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]=!cursoForm.valid>Salvar</button>
+    </div>
   </form>
 </div>

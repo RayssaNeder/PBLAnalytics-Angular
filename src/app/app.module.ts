@@ -1,3 +1,4 @@
+import { CursoService } from './curso/curso.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,6 +10,8 @@ import {MenuItem} from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
+
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'primeng/tooltip';
 import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
@@ -18,6 +21,7 @@ import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -41,9 +45,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     TooltipModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    DropdownModule
   ],
-  providers: [],
+  providers: [CursoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

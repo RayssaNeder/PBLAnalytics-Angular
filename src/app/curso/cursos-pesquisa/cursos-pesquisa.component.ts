@@ -1,3 +1,4 @@
+import { CursoService } from './../curso.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,17 +6,23 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cursos-pesquisa.component.html',
   styleUrls: ['./cursos-pesquisa.component.css']
 })
-export class CursosPesquisaComponent {
+export class CursosPesquisaComponent  implements OnInit{
 
   title = 'pblAnalytics-ui';
-  cursos = [
-    { nome: 'Calculo Integral I', sku: 'CC04', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral II', sku: 'CC05', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral III', sku: 'CC06', instituicao: 'CESAR SCHOOL', grau: 'Bacharelado', modalidade: 'Presencial'},
-    { nome: 'Calculo Integral I', sku: 'CC07', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'},
-    { nome: 'Calculo Integral II', sku: 'CC08', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'},
-    { nome: 'Calculo Integral III', sku: 'CC09', instituicao: 'CESAR SCHOOL', grau: 'Licenciatura', modalidade: 'À Distância'}
-  ];
+  cursos = [];
+
+  constructor(private cursoService: CursoService){
+  }
+
+
+  ngOnInit(){
+    this.consultar();
+  }
+
+  consultar(){
+    this.cursoService.consultar().then(cursos => this.cursos = cursos);
+  }
+
 
 
 }

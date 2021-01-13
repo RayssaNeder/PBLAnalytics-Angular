@@ -9,41 +9,46 @@
 
   <form #disciplinaForm="ngForm" (ngSubmit)="salvar(disciplinaForm)">
 
-    <div class="form-group">
-      <label>Código</label>
-      <input type="text" class="form-control" name="codigo"
-      [(ngModel)] = disciplina.codigo required minlength="7" #codigo="ngModel"
-      [class.is-invalid]="codigo.invalid && codigo.touched">
 
-      <div *ngIf="codigo.hasError('required') && codigo.touched" class="invalid-feedback">Informe um código</div>
-      <div *ngIf="codigo.hasError('minlength') && codigo.touched"  class="invalid-feedback">O código de ter 7 dígitos</div>
-
+    <div class="p-col-12">
+      <h1>Nova Disciplina</h1>
     </div>
 
-    <div class="form-group">
-      <label class="form-control-label">Nome</label>
-      <input type="text" class="form-control" name="nome"
-      [(ngModel)] = disciplina.nome required minlength="3" #nome="ngModel"
-      [class.is-invalid]="nome.invalid && nome.touched">
+    <div class="p-grid">
 
-      <div *ngIf="nome.hasError('required') && nome.touched" class="invalid-feedback">Informe um nome</div>
-      <div *ngIf="nome.hasError('minlength') && nome.touched" class="invalid-feedback">O código de ter no mínimo 3 dígitos</div>
+        <div class="p-col-12 p-md-3 p-fluid">
+          <label>Código</label>
+          <input pInputText type="text" name="codigo"
+          [(ngModel)] = disciplina.codigo required minlength="7" #codigo="ngModel"
+          [class.is-invalid]="codigo.invalid && codigo.touched">
 
+          <div *ngIf="codigo.hasError('required') && codigo.touched" class="invalid-feedback">Informe um código</div>
+          <div *ngIf="codigo.hasError('minlength') && codigo.touched"  class="invalid-feedback">O código de ter 7 dígitos</div>
+
+        </div>
+
+        <div class="p-col-12 p-md-8 p-fluid">
+          <label>Nome</label>
+          <input pInputText type="text"  name="nome"
+          [(ngModel)] = disciplina.nome required minlength="3" #nome="ngModel"
+          [class.is-invalid]="nome.invalid && nome.touched">
+
+          <div *ngIf="nome.hasError('required') && nome.touched" class="invalid-feedback">Informe um nome</div>
+          <div *ngIf="nome.hasError('minlength') && nome.touched" class="invalid-feedback">O nome de ter no mínimo 3 dígitos</div>
+
+        </div>
+
+      </div>
+
+      <div class="p-grid">
+
+        <div class="p-col-12 p-md-8 p-fluid">
+          <label>Curso {{ disciplina.curso }}</label>
+          <p-dropdown [options]="cursos" placeholder="Selecione"
+             #curso></p-dropdown>
+        </div>
     </div>
-
-    <div class="form-group">
-      <label class="form-control-label">curso</label>
-      <select class="form-control" name="curso"
-      [(ngModel)] = disciplina.curso required  #curso="ngModel"
-      [class.is-invalid]="curso.invalid && curso.touched">
-        <option value="">Selecione</option>
-        <option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</option>
-
-      </select>
-
-      <div *ngIf="curso.hasError('required') && curso.touched" class="invalid-feedback">Selecione um cuso</div>
-    </div>
-
     <button type="submit" class="btn btn-primary" [disabled]=!disciplinaForm.valid>Salvar</button>
   </form>
 </div>
+
