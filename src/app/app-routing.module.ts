@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagina-nao-encontrada.component';
@@ -6,7 +7,9 @@ import { CursoFormComponent } from './curso/curso-form/curso-form.component';
 import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'cursos', pathMatch: 'full' },
+  { path:  'cursos', component: CursosPesquisaComponent },
+  { path:  'cursos/novo', component: CursoFormComponent },
+  { path: 'disciplinas/novo', component: DisciplinaFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];
