@@ -21,6 +21,7 @@ import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 
@@ -31,7 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CursosPesquisaComponent,
     NavbarComponent,
     CursoFormComponent,
-    DisciplinaFormComponent
+    DisciplinaFormComponent,
+    PaginaNaoEncontradaComponent
 
   ],
   imports: [
