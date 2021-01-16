@@ -1,5 +1,9 @@
 import { CursoService } from './../curso.service';
 import { Component, OnInit } from '@angular/core';
+import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
+
+import { Title } from '@angular/platform-browser';
+//import { ErrorHandlerService } from './../../core/error-handler.service';
 
 @Component({
   selector: 'app-cursos-pesquisa',
@@ -8,19 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursosPesquisaComponent  implements OnInit{
 
-  title = 'pblAnalytics-ui';
+
   cursos = [];
 
-  constructor(private cursoService: CursoService){
+  constructor(private cursoService: CursoService,
+    private title: Title){
+
   }
 
 
   ngOnInit(){
-    this.consultar();
+    this.title.setTitle('Pesquisa de cursos');
   }
 
   consultar(){
     this.cursoService.consultar().then(cursos => this.cursos = cursos);
+  }
+
+  pesquisar(pagina = 0) {
+    this.cursoService.consultar()
+      .then(resultado => {
+
+        this.cursos = resultado.cursos;
+      })
+      .catch(erro => console.log("erro"));
   }
 
 

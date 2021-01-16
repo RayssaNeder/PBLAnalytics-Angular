@@ -1,3 +1,4 @@
+import { OauthService } from './../../seguranca/oauth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  constructor(public auth:  OauthService){
+
+  }
 
   exibindoMenu = false;
 

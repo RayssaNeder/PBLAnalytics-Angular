@@ -1,59 +1,75 @@
 <div class="container">
-  <div class="p-col">
-    <div class="p-col-12">
-      <h1>Cursos</h1>
-    </div>
 
-    <div class="p-col-12 p-fluid">
-      <label>Nome</label>
-      <input type="text" pInputText />
-    </div>
 
-    <div class="p-col-4 p-fluid">
-      <label style="display: block;">Código</label>
-      <input type="text" pInputText />
-    </div>
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
 
-    <div class="p-col-12">
+      <div class="p-col">
 
-      <button pButton type="submit" label="Pesquisar" ></button>
-    </div>
+        <div class="p-col-12">
+          <h1>Cursos</h1>
+        </div>
 
-  </div>
+        <div class="p-col-12 p-fluid">
+          <label>Nome</label>
+          <input type="text" pInputText />
+        </div>
 
-  <div class="p-col">
-    <div class="p-col-12">
-      <p-table [value]="cursos" [paginator]="true" [rows]="3" [responsive]="true">
-        <ng-template pTemplate="header">
-            <tr>
-                <th class="col-data-header">sku</th>
-                <th class="col-data-header">nome</th>
-                <th class="col-data-header">instituicao</th>
-                <th class="col-data-header">grau</th>
-                <th class="col-data-header"><button pButton label="Teste"></button></th>
-                <th class="col-data-header">Ações</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-curso>
-            <tr>
-                <td class="p-column-title">{{curso.sku}}</td>
-                <td class="p-column-title">{{curso.nome}}</td>
-                <td class="p-column-title">{{curso.instituicao}}</td>
-                <td class="p-column-title">{{curso.grau}}</td>
-                <td class="p-column-title" [ngStyle]="{color: curso.modalidade === 'À Distância' ? 'red' : 'blue'}">{{curso.modalidade}}</td>
-                <td class="col-acoes">
-                  <a pButton  class="btn-trash" pTooltip="editar" tooltipPosition="top" icon="pi pi-pencil"></a>
-                  <button pButton icon="pi pi-trash" pTooltip="editar" tooltipPosition="top"></button>
+        <div class="p-col-4 p-fluid">
+          <label style="display: block;">Código</label>
+          <input type="text" pInputText />
+        </div>
+
+        <div class="p-col-12">
+
+          <button pButton type="submit" label="Pesquisar" ></button>
+        </div>
+
+      </div>
+
+      <div class="p-col">
+        <div class="p-col-12">
+          <p-table [value]="cursos" [paginator]="true" [rows]="3" [responsive]="true">
+
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="6">
+                  Nenhum lançamento encontrado
                 </td>
               </tr>
-        </ng-template>
-      </p-table>
-    </div>
+            </ng-template>
 
-    <div class="ui-g-12">
-      <a pButton label="Novo Curso" routerLink = "/cursos/novo"></a>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="col-data-header">sku</th>
+                    <th class="col-data-header">nome</th>
+                    <th class="col-data-header">instituicao</th>
+                    <th class="col-data-header">grau</th>
+                    <th class="col-data-header"><button pButton label="Teste"></button></th>
+                    <th class="col-data-header">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-curso>
+                <tr>
+                    <td class="p-column-title">{{curso.sku}}</td>
+                    <td class="p-column-title">{{curso.nome}}</td>
+                    <td class="p-column-title">{{curso.instituicao}}</td>
+                    <td class="p-column-title">{{curso.grau}}</td>
+                    <td class="p-column-title" [ngStyle]="{color: curso.modalidade === 'À Distância' ? 'red' : 'blue'}">{{curso.modalidade}}</td>
+                    <td class="col-acoes">
+                      <a pButton  class="btn-trash" pTooltip="editar" tooltipPosition="top" icon="pi pi-pencil"></a>
+                      <button pButton icon="pi pi-trash" pTooltip="editar" tooltipPosition="top"></button>
+                    </td>
+                  </tr>
+            </ng-template>
+          </p-table>
+        </div>
 
-    </div>
+        <div class="ui-g-12">
+          <a pButton label="Novo Curso" routerLink = "/cursos/novo"></a>
 
-  </div>
+        </div>
+
+
+      </div>
+    </form>
 </div>
