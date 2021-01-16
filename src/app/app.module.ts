@@ -1,3 +1,4 @@
+import { SegurancaModule } from './seguranca/seguranca.module';
 import { CursoService } from './curso/curso.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,10 +19,16 @@ import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa
 import { NavbarComponent } from './navbar/navbar.component';
 import { CursoFormComponent } from './curso/curso-form/curso-form.component';
 import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
+import { ReactiveFormsModule} from '@angular/forms'
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagina-nao-encontrada.component';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 
 
@@ -38,6 +45,7 @@ import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagin
   ],
   imports: [
     BrowserModule,
+    SegurancaModule,
     AppRoutingModule,
     AccordionModule,
     InputTextModule,
@@ -47,6 +55,7 @@ import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagin
     HttpClientModule,
     TooltipModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     DropdownModule
   ],

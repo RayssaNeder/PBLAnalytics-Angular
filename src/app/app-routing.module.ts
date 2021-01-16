@@ -1,3 +1,4 @@
+import { LoginFormComponent } from './seguranca/login-form/login-form.component';
 import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa
 
 const routes: Routes = [
   { path:  'cursos', component: CursosPesquisaComponent },
+  { path:  'login', component: LoginFormComponent },
   { path:  'cursos/novo', component: CursoFormComponent },
   { path: 'disciplinas/novo', component: DisciplinaFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
