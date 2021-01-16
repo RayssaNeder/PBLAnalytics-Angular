@@ -16,16 +16,14 @@ import {DropdownModule} from 'primeng/dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'primeng/tooltip';
 import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { CursoFormComponent } from './curso/curso-form/curso-form.component';
 import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
 import { ReactiveFormsModule} from '@angular/forms'
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
-
+import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -37,10 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     CursosPesquisaComponent,
-    NavbarComponent,
     CursoFormComponent,
-    DisciplinaFormComponent,
-    PaginaNaoEncontradaComponent
+    DisciplinaFormComponent
+
 
   ],
   imports: [
@@ -57,7 +54,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    DropdownModule
+    DropdownModule,
+    CoreModule
   ],
   providers: [CursoService],
   bootstrap: [AppComponent]
