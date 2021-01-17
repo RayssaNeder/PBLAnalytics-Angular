@@ -8,6 +8,7 @@ import { CursoFormComponent } from './curso/curso-form/curso-form.component';
 import { CursosPesquisaComponent } from './curso/cursos-pesquisa/cursos-pesquisa.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'cursos', pathMatch: 'full' },
   { path:  'cursos', component: CursosPesquisaComponent },
   { path:  'login', component: LoginFormComponent },
   { path:  'cursos/novo', component: CursoFormComponent },

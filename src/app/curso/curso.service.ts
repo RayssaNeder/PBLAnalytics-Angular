@@ -1,70 +1,61 @@
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core'
-import { LazyLoadEvent } from 'primeng/api';
 
 export class CursoFiltro {
-  descricao: string;
+  codigo: number;
+  nome: string;
   pagina = 0;
   itensPorPagina = 5;
 }
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CursoService {
 
   cursoUrl = 'http://localhost:8092/cursos';
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
-   }
-
-   consultar(): Promise<any>{
-
-    const headers = new HttpHeaders()
-    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return this.http.get('http://localhost:8092/cursos',  { headers }).toPromise().then(response => response['content']);
-
-   }
-
-
-  excluir(codigo: number): Promise<void> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return this.http.delete(`${this.cursoUrl}/${codigo}`, { headers })
-      .toPromise()
-      .then(() => null);
-  }
 
   pesquisar(filtro: CursoFiltro): Promise<any> {
     const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+      .append('Authorization', 'Basic YW5ndWxhcjpyb290');
     let params = new HttpParams()
       .set('page', filtro.pagina.toString())
       .set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.descricao) {
-      params = params.set('descricao', filtro.descricao);
+    if (filtro.codigo) {
+      params = params.set('codigo', filtro.codigo.toString());
+    }
+
+    if (filtro.nome) {
+      params = params.set('nome', filtro.nome);
     }
 
     return this.http.get(`${this.cursoUrl}?resumo`, { headers, params })
       .toPromise()
       .then(response => {
-        const lancamentos = response['content'];
-
+        const cursos = response;
         const resultado = {
-          lancamentos,
+          cursos,
           total: response['totalElements']
         };
 
         return resultado;
       });
+  }
+
+
+  excluir(codigo: number): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YW5ndWxhcjpyb290');
+
+    return this.http.delete(`${this.cursoUrl}/${codigo}`, { headers })
+      .toPromise()
+      .then(() => null);
   }
 
 

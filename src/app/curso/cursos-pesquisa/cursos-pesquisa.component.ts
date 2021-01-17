@@ -18,7 +18,7 @@ export class CursosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid: Table;
 
   constructor(
-    private CursoService: CursoService,
+    private cursoService: CursoService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
@@ -32,10 +32,11 @@ export class CursosPesquisaComponent implements OnInit {
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.CursoService.pesquisar(this.filtro)
+    this.cursoService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.cursos = resultado.cursos;
+        console.log('olhaaaaaaaaa ' +  this.cursos)
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -55,7 +56,7 @@ export class CursosPesquisaComponent implements OnInit {
   }
 
   excluir(curso: any) {
-    this.CursoService.excluir(curso.codigo)
+    this.cursoService.excluir(curso.codigo)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
