@@ -58,5 +58,10 @@ export class CursoService {
       .then(() => null);
   }
 
+  adicionar(curso: any): Promise<any> {
+    return this.http.post(this.cursoUrl, curso)
+      .toPromise();
+  }
+
 
 }

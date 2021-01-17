@@ -14,6 +14,7 @@ import { ToastModule } from 'primeng/toast';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { ErrorHandlerService } from './erro-handler.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localePt);
 
@@ -22,7 +23,7 @@ registerLocaleData(localePt);
     CommonModule,
     RouterModule,
     HttpClientModule,
-
+    BrowserAnimationsModule,
     ToastModule,
     ConfirmDialogModule,
   ],

@@ -41,6 +41,8 @@ export class CursosPesquisaComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+
+
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
