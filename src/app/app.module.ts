@@ -1,3 +1,8 @@
+import { SharedModule } from './shared/shared.module';
+
+import { AlunoModule } from './aluno/aluno.module';
+import { DisciplinaModule } from './disciplina/disciplina.module';
+import { CursoModule } from './curso/curso.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { CursoService } from './curso/curso.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,10 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     CursosPesquisaComponent,
-    CursoFormComponent,
-    DisciplinaFormComponent
-
-
+    CursoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgbModule,
     DropdownModule,
-    CoreModule
+    CoreModule,
+
+    CursoModule,
+    SegurancaModule,
+    AlunoModule,
+    SharedModule
+
   ],
   providers: [CursoService],
   bootstrap: [AppComponent]

@@ -1,35 +1,35 @@
 <div class="container">
 
-  {{ aluno | json }}
-  {{ alunoForm.valid }}
 
   <div class="alert alert-danger">
     preencha todos os campos corretamente
   </div>
 
-  <form #alunoForm="ngForm" (ngSubmit)="salvar(alunoForm)">
+  <form #alunoForm="ngForm" autocomplete="off">
 
-    <div class="form-group">
-      <label class="form-control-label">Código</label>
-      <input type="text" class="form-control" name="matricula"
-      [(ngModel)] = aluno.matricula required minlength="7">
+    <div class="p-col-12 p-md-3 p-fluid">
+      <label>Código</label>
+      <input pInputText type="text" name="código"
+        ngModel #codigo="ngModel" required minlength="5">
+
+      <app-message [control]="codigo" error="required"
+        text="Informe o código"></app-message>
+      <app-message [control]="codigo" error="minlength"
+        text="Mínimo de {{ codigo.errors?.minlength?.requiredLength }} caracteres"></app-message>
     </div>
 
-    <div class="form-group">
-      <label class="form-control-label">Nome</label>
-      <input type="text" class="form-control" name="nome"
-      [(ngModel)] = aluno.nome required minlength="3">
+    <div class="ui-g-12 ui-fluid">
+      <label>Nome</label>
+      <input pInputText type="text" name="nome"
+        ngModel #nome="ngModel" required minlength="5">
+
+      <app-message [control]="nome" error="required"
+        text="Informe o nome"></app-message>
+      <app-message [control]="nome" error="minlength"
+        text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
     </div>
 
-    <div class="form-group">
-      <label class="form-control-label">Email</label>
-      <input type="text" class="form-control" name="email"
-      [(ngModel)] = aluno.email  email #email="ngModel">
 
-
-      <div *ngIf="nome.hasError('email')">Informe um email válido</div>
-
-    </div>
 
     <button type="submit" class="btn btn-primary" alunoForm>Salvar</button>
   </form>

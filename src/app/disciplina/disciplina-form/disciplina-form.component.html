@@ -1,13 +1,7 @@
 <div class="container">
 
-  {{ disciplina | json }}
-  {{ disciplinaForm.valid }}
 
-  <div *ngIf="disciplinaForm.invalid" class="alert alert-danger">
-    preencha todos os campos corretamente
-  </div>
-
-  <form #disciplinaForm="ngForm" (ngSubmit)="salvar(disciplinaForm)">
+  <form #disciplinaForm="ngForm" autocomplete="off">
 
 
     <div class="p-col-12">
@@ -18,35 +12,35 @@
 
         <div class="p-col-12 p-md-3 p-fluid">
           <label>Código</label>
-          <input pInputText type="text" name="codigo"
-          [(ngModel)] = disciplina.codigo required minlength="7" #codigo="ngModel"
-          [class.is-invalid]="codigo.invalid && codigo.touched">
+          <input pInputText type="text" name="código"
+            ngModel #codigo="ngModel" required minlength="5">
 
-          <div *ngIf="codigo.hasError('required') && codigo.touched" class="invalid-feedback">Informe um código</div>
-          <div *ngIf="codigo.hasError('minlength') && codigo.touched"  class="invalid-feedback">O código de ter 7 dígitos</div>
-
+          <app-message [control]="codigo" error="required"
+            text="Informe o código"></app-message>
+          <app-message [control]="codigo" error="minlength"
+            text="Mínimo de {{ codigo.errors?.minlength?.requiredLength }} caracteres"></app-message>
         </div>
 
-        <div class="p-col-12 p-md-8 p-fluid">
+        <div class="ui-g-12 ui-fluid">
           <label>Nome</label>
-          <input pInputText type="text"  name="nome"
-          [(ngModel)] = disciplina.nome required minlength="3" #nome="ngModel"
-          [class.is-invalid]="nome.invalid && nome.touched">
+          <input pInputText type="text" name="nome"
+            ngModel #nome="ngModel" required minlength="5">
 
-          <div *ngIf="nome.hasError('required') && nome.touched" class="invalid-feedback">Informe um nome</div>
-          <div *ngIf="nome.hasError('minlength') && nome.touched" class="invalid-feedback">O nome de ter no mínimo 3 dígitos</div>
-
+          <app-message [control]="nome" error="required"
+            text="Informe o nome"></app-message>
+          <app-message [control]="nome" error="minlength"
+            text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
         </div>
 
       </div>
 
       <div class="p-grid">
 
-        <div class="p-col-12 p-md-8 p-fluid">
+        <!-- <div class="p-col-12 p-md-8 p-fluid">
           <label>Curso {{ disciplina.curso }}</label>
           <p-dropdown [options]="cursos" placeholder="Selecione"
              #curso></p-dropdown>
-        </div>
+        </div> -->
     </div>
     <button type="submit" class="btn btn-primary" [disabled]=!disciplinaForm.valid>Salvar</button>
   </form>

@@ -1,43 +1,71 @@
-import { CursoService } from './../curso.service';
-import { Component, OnInit } from '@angular/core';
-import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
-
+import { ErrorHandlerService } from './../../core/erro-handler.service';
+import { CursoService, CursoFiltro } from './../curso.service';
 import { Title } from '@angular/platform-browser';
-//import { ErrorHandlerService } from './../../core/error-handler.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
+import { Table } from 'primeng/table';
 @Component({
   selector: 'app-cursos-pesquisa',
   templateUrl: './cursos-pesquisa.component.html',
   styleUrls: ['./cursos-pesquisa.component.css']
 })
-export class CursosPesquisaComponent  implements OnInit{
+export class CursosPesquisaComponent implements OnInit {
 
-
+  totalRegistros = 0;
+  filtro = new CursoFiltro();
   cursos = [];
+  @ViewChild('tabela') grid: Table;
 
-  constructor(private cursoService: CursoService,
-    private title: Title){
+  constructor(
+    private CursoService: CursoService,
+    private errorHandler: ErrorHandlerService,
+    private messageService: MessageService,
+    private confirmation: ConfirmationService,
+    private title: Title
+  ) { }
 
-  }
-
-
-  ngOnInit(){
-    this.title.setTitle('Pesquisa de cursos');
-  }
-
-  consultar(){
-    this.cursoService.consultar().then(cursos => this.cursos = cursos);
+  ngOnInit() {
+    this.title.setTitle('Pesquisa de cursoa');
   }
 
   pesquisar(pagina = 0) {
-    this.cursoService.consultar()
-      .then(resultado => {
+    this.filtro.pagina = pagina;
 
+    this.CursoService.pesquisar(this.filtro)
+      .then(resultado => {
+        this.totalRegistros = resultado.total;
         this.cursos = resultado.cursos;
       })
-      .catch(erro => console.log("erro"));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event.first / event.rows;
+    this.pesquisar(pagina);
+  }
 
+  confirmarExclusao(curso: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluir(curso);
+      }
+    });
+  }
+
+  excluir(curso: any) {
+    this.CursoService.excluir(curso.codigo)
+      .then(() => {
+        if (this.grid.first === 0) {
+          this.pesquisar();
+        } else {
+          this.grid.reset();
+        }
+
+        this.messageService.add({ severity: 'success', detail: 'Curso excluído com sucesso!' });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
 
 }
