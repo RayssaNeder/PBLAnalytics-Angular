@@ -22,17 +22,18 @@ export class OauthService {
 
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body, { headers })
+    return this.http.post(this.oauthTokenUrl, body, { headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.armazenaToken(response['access_token']);
       })
       .catch(response => {
-        if (response.status == 400){
-          const responseJson = response.json();
-
-          if(responseJson.error === 'invalid_grant'){
+        if (response.status === 400){
+          console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1');
+          if (response.error === 'invalid_grant') {
+            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2');
             return Promise.reject('Usuário ou senha inválida');
+
           }
         }
 
@@ -51,6 +52,29 @@ export class OauthService {
     if (token) {
       this.armazenaToken(token);
     }
+  }
+
+  obterNovoAccessToken(): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/x-www-form-urlencoded')
+      .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+
+    const body = 'grant_type=refresh_token';
+
+    return this.http.post(this.oauthTokenUrl, body,
+        { headers, withCredentials: true })
+      .toPromise()
+      .then(response => {
+        this.armazenaToken(response['access_token']);
+
+        console.log('Novo access token criado!');
+
+        return Promise.resolve(null);
+      })
+      .catch(response => {
+        console.error('Erro ao renovar token.', response);
+        return Promise.resolve(null);
+      });
   }
 
 }

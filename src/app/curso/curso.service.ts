@@ -1,6 +1,7 @@
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core'
+import { Curso } from './../core/model';
 
 export class CursoFiltro {
   codigo: number;
@@ -58,9 +59,44 @@ export class CursoService {
       .then(() => null);
   }
 
-  adicionar(curso: any): Promise<any> {
-    return this.http.post(this.cursoUrl, curso)
+  adicionar(curso: Curso): Promise<Curso> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YW5ndWxhcjpyb290')
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<Curso>(this.cursoUrl, curso, { headers })
       .toPromise();
+  }
+
+  buscarPorCodigo(codigo: string): Promise<Curso> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YW5ndWxhcjpyb290');
+
+    return this.http.get<Curso>(`${this.cursoUrl}/${codigo}`, { headers })
+      .toPromise()
+      .then(response => {
+        const curso = response;
+
+        // this.converterStringsParaDatas([lancamento]);
+
+        return curso;
+      });
+  }
+
+  atualizar(curso: Curso): Promise<Curso> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YW5ndWxhcjpyb290')
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<Curso>(`${this.cursoUrl}/${curso.sku}`,curso, { headers })
+      .toPromise()
+      .then(response => {
+        const cursoAlterado = response;
+
+        // this.converterStringsParaDatas([cursoAlterado]);
+
+        return cursoAlterado;
+      });
   }
 
 
