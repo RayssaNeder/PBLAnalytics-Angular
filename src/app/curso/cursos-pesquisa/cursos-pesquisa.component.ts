@@ -36,7 +36,6 @@ export class CursosPesquisaComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.cursos = resultado.cursos;
-        console.log('olhaaaaaaaaa ' +  this.cursos)
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -58,7 +57,7 @@ export class CursosPesquisaComponent implements OnInit {
   }
 
   excluir(curso: any) {
-    this.cursoService.excluir(curso.codigo)
+    this.cursoService.excluir(curso.sku)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
