@@ -36,7 +36,7 @@ export class CursoService {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.cursoUrl}?resumo`, { headers, params })
+    return this.http.get(`${this.cursoUrl}`, { headers, params })
       .toPromise()
       .then(response => {
         const cursos = response;
@@ -60,19 +60,22 @@ export class CursoService {
   }
 
   adicionar(curso: Curso): Promise<Curso> {
+
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290')
       .append('Content-Type', 'application/json');
+
+
 
     return this.http.post<Curso>(this.cursoUrl, curso, { headers })
       .toPromise();
   }
 
-  buscarPorCodigo(codigo: string): Promise<Curso> {
+  buscarPorCodigo(sku: string): Promise<Curso> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.get<Curso>(`${this.cursoUrl}/${codigo}`, { headers })
+    return this.http.get<Curso>(`${this.cursoUrl}/${sku}`, { headers })
       .toPromise()
       .then(response => {
         const curso = response;

@@ -13,6 +13,8 @@ const routes: Routes = [
   { path:  'login', component: LoginFormComponent },
   { path:  'cursos/novo', component: CursoFormComponent },
   { path: 'disciplinas/novo', component: DisciplinaFormComponent },
+  { path: 'disciplinas/:sku', component: DisciplinaFormComponent },
+  { path: 'cursos/:sku', component: CursoFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];

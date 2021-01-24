@@ -11,8 +11,8 @@
 
         <div class="p-col-12 p-md-6 p-lg-2 p-fluid">
             <label>Código</label>
-            <input pInputText type="text" name="código"
-              ngModel #codigo="ngModel" required minlength="5">
+            <input pInputText type="text" name="sku"
+             #codigo="ngModel" required minlength="5" [(ngModel)]="curso.sku">
 
           <app-message [control]="codigo" error="required"
             text="Informe o código"></app-message>
@@ -23,7 +23,7 @@
         <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
           <label>Nome</label>
           <input pInputText type="text" name="nome"
-            ngModel #nome="ngModel" required minlength="5">
+             #nome="ngModel" required minlength="5" [(ngModel)]="curso.nome">
 
           <app-message [control]="nome" error="required"
             text="Informe o nome"></app-message>
@@ -33,14 +33,14 @@
 
 
         <div class="p-col-12 p-md-6 p-md-6 p-fluid">
-          <label>Modalidade {{ curso.modalidade }}</label>
-          <p-dropdown [options]="modalidades" placeholder="Selecione"
+          <label>Modalidade</label>
+          <p-dropdown [options]="modalidades" name="modalidade" placeholder="Selecione" [(ngModel)]="curso.modalidade"
             #modalidade></p-dropdown>
         </div>
 
         <div class="p-col-12 p-md-6 p-md-6 p-fluid">
-          <label>Grau {{ curso.grau }}</label>
-          <p-dropdown [options]="graus" placeholder="Selecione"
+          <label>Grau</label>
+          <p-dropdown [options]="graus" name="grau" placeholder="Selecione" [(ngModel)]="curso.grau"
             #grau></p-dropdown>
         </div>
 
@@ -48,7 +48,7 @@
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
 
-        <a href="javascript:;">Voltar para a pesquisa</a>
+        <a routerLink="/cursos">Voltar para a pesquisa</a>
       </div>
 
     </form>

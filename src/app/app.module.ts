@@ -1,3 +1,4 @@
+import { Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 
 import { AlunoModule } from './aluno/aluno.module';
@@ -30,10 +31,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-
 
 
 @NgModule({

@@ -1,3 +1,4 @@
+
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from './../curso.service';
@@ -5,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/erro-handler.service';
+import { Grau, Modalidade } from 'src/app/core/model';
 
 
 class Curso{
+codigo: number;
 sku: string;
 nome: string;
-modalidade: string;
-grau: string;
+modalidade: Modalidade;
+grau: Grau;
 }
 
 @Component({
@@ -22,8 +25,15 @@ grau: string;
 export class CursoFormComponent implements OnInit{
 
   curso: Curso = new Curso();
-  modalidades = ['Presencial', 'à distânica'];
-  graus = ['Bacharelado', 'Licenciatura'];
+  modalidades = [
+    { label: 'Presencial', value: 'P'},
+    { label:  'à distânica', value: 'D' }
+  ];
+
+  graus = [
+    {label: 'Bacharelado', value: 'B'},
+    {label: 'Licenciatura', value: 'L'}
+  ];
 
   constructor(
   private cursoService: CursoService,
@@ -38,7 +48,7 @@ export class CursoFormComponent implements OnInit{
 
 
   ngOnInit(){
-    const codigoCurso = this.route.snapshot.params['codigo'];
+    const codigoCurso = this.route.snapshot.params['sku'];
 
     this.title.setTitle('Novo curso');
 
@@ -51,11 +61,11 @@ export class CursoFormComponent implements OnInit{
   }
 
   get editando() {
-    return Boolean(this.curso.sku)
+    return Boolean(this.curso.codigo)
   }
 
-  carregarCurso(codigo: string) {
-    this.cursoService.buscarPorCodigo(codigo)
+  carregarCurso(sku: string) {
+    this.cursoService.buscarPorCodigo(sku)
       .then(curso => {
         this.curso = curso;
         this.atualizarTituloEdicao();
@@ -85,8 +95,8 @@ export class CursoFormComponent implements OnInit{
 
   atualizarCurso(form: FormControl) {
     this.cursoService.atualizar(this.curso)
-      .then(lancamento => {
-        this.curso = lancamento;
+      .then(curso => {
+        this.curso = curso;
 
         this.messageService.add({ severity: 'success', detail: 'Curso alterado com sucesso!' });
         this.atualizarTituloEdicao();

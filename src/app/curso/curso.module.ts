@@ -1,6 +1,5 @@
 import { CursoFormComponent } from './curso-form/curso-form.component';
 import { CursosRoutingModule } from './cursos-routing.module';
-import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -28,11 +27,9 @@ import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.compo
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     SharedModule,
     CommonModule,
-    FormsModule,
     RouterModule,
 
     InputTextModule,
@@ -41,7 +38,6 @@ import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.compo
     TooltipModule,
     CalendarModule,
     SelectButtonModule,
-    DropdownModule,
 
     SharedModule,
     CursosRoutingModule

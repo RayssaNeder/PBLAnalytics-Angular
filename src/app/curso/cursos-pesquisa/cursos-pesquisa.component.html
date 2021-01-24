@@ -4,13 +4,9 @@
 
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
-
         <div class="p-col-12">
           <h1>Cursos</h1>
         </div>
-
-
-
 
         <div class="p-col-12 p-fluid">
           <label>Código</label>
@@ -78,7 +74,7 @@
             <td class="col-acoes">
                   <span class="p-column-title"></span>
                   <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                    [routerLink]="['/cursoss', curso.codigo]"></a>
+                    [routerLink]="['/cursos', curso.sku]"></a>
                   <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                     (click)="confirmarExclusao(curso)"></button>
 
