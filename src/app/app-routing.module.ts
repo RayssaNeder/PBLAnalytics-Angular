@@ -1,3 +1,4 @@
+import { PessoaFormComponent } from './pessoa/pessoa-form/pessoa-form.component';
 import { PessoasPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
 import { DisciplinasPesquisaComponent } from './disciplina/disciplinas-pesquisa/disciplinas-pesquisa.component';
 import { HomeComponent } from './home/home/home.component';
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'disciplinas/:sku', component: DisciplinaFormComponent },
   { path: 'cursos/:sku', component: CursoFormComponent },
   { path:  'pessoas', component: PessoasPesquisaComponent },
+  { path:  'pessoas/nova', component: PessoaFormComponent },
+  { path: 'pessoas/:codigo', component: PessoaFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];
