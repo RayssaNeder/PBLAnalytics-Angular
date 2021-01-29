@@ -16,3 +16,21 @@ export class Curso {
   grau: Grau;
 
 }
+
+export class Disciplina {
+  codigo: number;
+  sku: string;
+  nome: string;
+  cursos: Curso[];
+
+}
+
+export class Pessoa{
+  codigo: number;
+  nome: string;
+  email: string;
+  cpf: string;
+  telefone: string;
+  sexo: string;
+  ocupacao: string;
+  }

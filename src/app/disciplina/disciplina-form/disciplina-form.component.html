@@ -1,48 +1,49 @@
 <div class="container">
 
 
-  <form #disciplinaForm="ngForm" autocomplete="off">
+  <form #disciplinaForm="ngForm" autocomplete="off" (ngSubmit)="salvar(disciplinaForm)">
 
-
-    <div class="p-col-12">
-      <h1>Nova Disciplina</h1>
-    </div>
-
-    <div class="p-grid">
-
-        <div class="p-col-12 p-md-3 p-fluid">
-          <label>Código</label>
-          <input pInputText type="text" name="código"
-            ngModel #codigo="ngModel" required minlength="5">
-
-          <app-message [control]="codigo" error="required"
-            text="Informe o código"></app-message>
-          <app-message [control]="codigo" error="minlength"
-            text="Mínimo de {{ codigo.errors?.minlength?.requiredLength }} caracteres"></app-message>
-        </div>
-
-        <div class="ui-g-12 ui-fluid">
-          <label>Nome</label>
-          <input pInputText type="text" name="nome"
-            ngModel #nome="ngModel" required minlength="5">
-
-          <app-message [control]="nome" error="required"
-            text="Informe o nome"></app-message>
-          <app-message [control]="nome" error="minlength"
-            text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
-        </div>
-
+  <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Nova Disciplina</h1>
       </div>
 
-      <div class="p-grid">
+      <div class="p-col-12 p-md-6 p-lg-2 p-fluid">
+        <label>Código</label>
+        <input pInputText type="text" name="sku"
+          #sku="ngModel" required minlength="5" [(ngModel)]="disciplina.sku">
 
-        <!-- <div class="p-col-12 p-md-8 p-fluid">
-          <label>Curso {{ disciplina.curso }}</label>
-          <p-dropdown [options]="cursos" placeholder="Selecione"
-             #curso></p-dropdown>
-        </div> -->
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]=!disciplinaForm.valid>Salvar</button>
+        <app-message [control]="sku" error="required"
+          text="Informe o código"></app-message>
+        <app-message [control]="sku" error="minlength"
+          text="Mínimo de {{ sku.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          #nome="ngModel" required minlength="5" [(ngModel)]="disciplina.nome">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <h5>Cursos</h5>
+        <p-listbox [options]="cursos" [(ngModel)]="disciplina.cursos"[metaKeySelection]="false" [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="curso.nome" [listStyle]="{'max-height':'250px'}" [style]="{'width':'15rem'}" name="cursos">
+          <ng-template let-curso pTemplate="curso">
+            <div class="country-item">
+                <div>{{curso.nome}}</div>
+            </div>
+        </ng-template>
+        </p-listbox>
+      </div>
+
+
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]=!disciplinaForm.valid>Salvar</button>
   </form>
 </div>
 

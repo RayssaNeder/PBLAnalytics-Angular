@@ -1,0 +1,78 @@
+<div class="container">
+
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+
+      <div class="p-col-12">
+        <h1>Novo pessoa</h1>
+      </div>
+
+
+      <div class="p-col-12 p-md-6 p-lg-2 p-fluid">
+          <label>Nome</label>
+          <input pInputText type="text" name="nome"
+           #nome="ngModel" required minlength="5" [(ngModel)]="pessoa.nome">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>CPF</label>
+        <input pInputText type="text" name="cpf"
+           #cpf="ngModel" required minlength="11" [(ngModel)]="pessoa.cpf">
+
+        <app-message [control]="cpf" error="required"
+          text="Informe o cpf"></app-message>
+        <app-message [control]="cpf" error="minlength"
+          text="Mínimo de {{ cpf.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>Telefone</label>
+        <input pInputText type="text" name="telefone"
+           #telefone="ngModel" required minlength="5" [(ngModel)]="pessoa.telefone">
+
+        <app-message [control]="telefone" error="required"
+          text="Informe o telefone"></app-message>
+        <app-message [control]="telefone" error="minlength"
+          text="Mínimo de {{ telefone.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>Sexo</label>
+        <input pInputText type="text" name="sexo"
+           #sexo="ngModel" required minlength="5" [(ngModel)]="pessoa.sexo">
+
+        <app-message [control]="sexo" error="required"
+          text="Informe o sexo"></app-message>
+        <app-message [control]="sexo" error="minlength"
+          text="Mínimo de {{ telefone.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>Ocupacao</label>
+        <input pInputText type="text" name="ocupacao"
+           #ocupacao="ngModel" required minlength="5" [(ngModel)]="pessoa.ocupacao">
+
+        <app-message [control]="ocupacao" error="required"
+          text="Informe a ocupacao"></app-message>
+        <app-message [control]="ocupacao" error="minlength"
+          text="Mínimo de {{ ocupacao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+
+
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Novo" class="ui-button-info"></button>
+
+      <a routerLink="/pessoas">Voltar para a pesquisa</a>
+    </div>
+
+  </form>
+
+</div>

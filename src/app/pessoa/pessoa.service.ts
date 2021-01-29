@@ -1,11 +1,13 @@
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core'
-import { Curso } from './../core/model';
+import { Pessoa } from './../core/model';
 
-export class CursoFiltro {
+export class PessoaFiltro {
   codigo: number;
   nome: string;
+  cpf: string;
+  telefone: string
   pagina = 0;
   itensPorPagina = 5;
 }
@@ -13,15 +15,15 @@ export class CursoFiltro {
 
 
 @Injectable()
-export class CursoService {
+export class PessoaService {
 
-  cursoUrl = 'http://localhost:8092/cursos';
+  pessoaUrl = 'http://localhost:8092/pessoas';
 
 
   constructor(private http: HttpClient) { }
 
 
-  pesquisar(filtro: CursoFiltro): Promise<any> {
+  pesquisar(filtro: PessoaFiltro): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
     let params = new HttpParams()
@@ -36,12 +38,12 @@ export class CursoService {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.cursoUrl}`, { headers, params })
+    return this.http.get(`${this.pessoaUrl}`, { headers, params })
       .toPromise()
       .then(response => {
-        const cursos = response;
+        const pessoas = response;
         const resultado = {
-          cursos,
+          pessoas,
           total: response['totalElements']
         };
 
@@ -54,12 +56,12 @@ export class CursoService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.delete(`${this.cursoUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.pessoaUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
   }
 
-  adicionar(curso: Curso): Promise<Curso> {
+  adicionar(pessoa: Pessoa): Promise<Pessoa> {
 
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290')
@@ -67,38 +69,38 @@ export class CursoService {
 
 
 
-    return this.http.post<Curso>(this.cursoUrl, curso, { headers })
+    return this.http.post<Pessoa>(this.pessoaUrl, pessoa, { headers })
       .toPromise();
   }
 
-  buscarPorCodigo(sku: string): Promise<Curso> {
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.get<Curso>(`${this.cursoUrl}/${sku}`, { headers })
+    return this.http.get<Pessoa>(`${this.pessoaUrl}/${codigo}`, { headers })
       .toPromise()
       .then(response => {
-        const curso = response;
+        const pessoa = response;
 
         // this.converterStringsParaDatas([lancamento]);
 
-        return curso;
+        return pessoa;
       });
   }
 
-  atualizar(curso: Curso): Promise<Curso> {
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290')
       .append('Content-Type', 'application/json');
 
-    return this.http.put<Curso>(`${this.cursoUrl}/${curso.sku}`,curso, { headers })
+    return this.http.put<Pessoa>(`${this.pessoaUrl}/${pessoa.codigo}`,pessoa, { headers })
       .toPromise()
       .then(response => {
-        const cursoAlterado = response;
+        const pessoaAlterado = response;
 
-        // this.converterStringsParaDatas([cursoAlterado]);
+        // this.converterStringsParaDatas([pessoaAlterado]);
 
-        return cursoAlterado;
+        return pessoaAlterado;
       });
   }
 
@@ -106,7 +108,7 @@ export class CursoService {
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.get(this.cursoUrl, { headers })
+    return this.http.get(this.pessoaUrl, { headers })
       .toPromise()
       .then(response => response);
   }

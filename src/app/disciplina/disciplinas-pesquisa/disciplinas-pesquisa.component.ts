@@ -1,41 +1,46 @@
+import { CursoService } from './../../curso/curso.service';
 import { ErrorHandlerService } from './../../core/erro-handler.service';
-import { CursoService, CursoFiltro } from './../curso.service';
+import { DisciplinaService, DisciplinaFiltro } from './../disciplina.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { Curso } from 'src/app/curso/curso';
 @Component({
-  selector: 'app-cursos-pesquisa',
-  templateUrl: './cursos-pesquisa.component.html',
-  styleUrls: ['./cursos-pesquisa.component.css']
+  selector: 'app-disciplinas-pesquisa',
+  templateUrl: './disciplinas-pesquisa.component.html',
+  styleUrls: ['./disciplinas-pesquisa.component.css']
 })
-export class CursosPesquisaComponent implements OnInit {
+export class DisciplinasPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
-  filtro = new CursoFiltro();
+  filtro = new DisciplinaFiltro();
+  disciplinas = [];
   cursos = [];
+  selectedCursos: Curso[];
   @ViewChild('tabela') grid: Table;
 
   constructor(
-    private cursoService: CursoService,
+    private disciplinaService: DisciplinaService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
+    private cursoService: CursoService,
     private confirmation: ConfirmationService,
     private title: Title
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Pesquisa de cursos');
+    this.title.setTitle('Pesquisa de disciplinaa');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.cursoService.pesquisar(this.filtro)
+    this.disciplinaService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.cursos = resultado.cursos;
+        this.disciplinas = resultado.disciplinas;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -47,17 +52,17 @@ export class CursosPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(curso: any) {
+  confirmarExclusao(disciplina: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(curso);
+        this.excluir(disciplina);
       }
     });
   }
 
-  excluir(curso: any) {
-    this.cursoService.excluir(curso.sku)
+  excluir(disciplina: any) {
+    this.disciplinaService.excluir(disciplina.sku)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
@@ -65,9 +70,12 @@ export class CursosPesquisaComponent implements OnInit {
           this.grid.reset();
         }
 
-        this.messageService.add({ severity: 'success', detail: 'Curso excluído com sucesso!' });
+        this.messageService.add({ severity: 'success', detail: 'disciplina excluído com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
+
+
 
 }

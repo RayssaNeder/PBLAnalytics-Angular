@@ -1,24 +1,24 @@
 import { ErrorHandlerService } from './../../core/erro-handler.service';
-import { CursoService, CursoFiltro } from './../curso.service';
+import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
 @Component({
-  selector: 'app-cursos-pesquisa',
-  templateUrl: './cursos-pesquisa.component.html',
-  styleUrls: ['./cursos-pesquisa.component.css']
+  selector: 'app-pessoa-pesquisa',
+  templateUrl: './pessoa-pesquisa.component.html',
+  styleUrls: ['./pessoa-pesquisa.component.css']
 })
-export class CursosPesquisaComponent implements OnInit {
+export class PessoasPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
-  filtro = new CursoFiltro();
-  cursos = [];
+  filtro = new PessoaFiltro();
+  pessoas = [];
   @ViewChild('tabela') grid: Table;
 
   constructor(
-    private cursoService: CursoService,
+    private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
@@ -26,16 +26,16 @@ export class CursosPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Pesquisa de cursos');
+    this.title.setTitle('Pesquisa de pessoas');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.cursoService.pesquisar(this.filtro)
+    this.pessoaService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.cursos = resultado.cursos;
+        this.pessoas = resultado.pessoas;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -47,17 +47,17 @@ export class CursosPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(curso: any) {
+  confirmarExclusao(pessoa: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(curso);
+        this.excluir(pessoa);
       }
     });
   }
 
-  excluir(curso: any) {
-    this.cursoService.excluir(curso.sku)
+  excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.sku)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
@@ -65,7 +65,7 @@ export class CursosPesquisaComponent implements OnInit {
           this.grid.reset();
         }
 
-        this.messageService.add({ severity: 'success', detail: 'Curso excluído com sucesso!' });
+        this.messageService.add({ severity: 'success', detail: 'Pessoa excluído com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
