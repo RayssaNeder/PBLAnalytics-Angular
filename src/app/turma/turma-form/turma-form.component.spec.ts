@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TurmaComponent } from './turma.component';
+import { TurmaComponent } from './turma-form.component';
 
 describe('TurmaComponent', () => {
   let component: TurmaComponent;

@@ -1,6 +1,7 @@
-import { CursosRoutingModule } from './curso-routing.module';
-import { CursoFormComponent } from './curso-form/curso-form.component';
+import { ProfessorsRoutingModule } from './professor-routing.module';
+import { ProfessorFormComponent } from './professor-form/professor-form.component';
 
+;
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +11,13 @@ import { SharedModule } from './../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.component';
-
-
+import { ProfessoresPesquisaComponent } from './professores-pesquisa/professores-pesquisa.component';
 
 
 @NgModule({
   declarations: [
-    CursoFormComponent,
-    CursosPesquisaComponent
+    ProfessorFormComponent,
+    ProfessoresPesquisaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,11 +27,10 @@ import { CursosPesquisaComponent } from './cursos-pesquisa/cursos-pesquisa.compo
     CommonModule,
     RouterModule,
 
-
     SharedModule,
-    CursosRoutingModule
+    ProfessorsRoutingModule
   ],
   providers: [],
   bootstrap: []
 })
-export class CursoModule { }
+export class ProfessorModule { }

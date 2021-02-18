@@ -1,3 +1,7 @@
+import { ProfessorFormComponent } from './professor/professor-form/professor-form.component';
+import { ProfessoresPesquisaComponent } from './professor/professores-pesquisa/professores-pesquisa.component';
+import { TurmaFormComponent } from './turma/turma-form/turma-form.component';
+import { TurmasPesquisaComponent } from './turma/turma-pesquisa/turma-pesquisa.component';
 import { PessoaFormComponent } from './pessoa/pessoa-form/pessoa-form.component';
 import { PessoasPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
 import { DisciplinasPesquisaComponent } from './disciplina/disciplinas-pesquisa/disciplinas-pesquisa.component';
@@ -23,6 +27,12 @@ const routes: Routes = [
   { path:  'pessoas', component: PessoasPesquisaComponent },
   { path:  'pessoas/nova', component: PessoaFormComponent },
   { path: 'pessoas/:codigo', component: PessoaFormComponent },
+  { path:  'turmas', component: TurmasPesquisaComponent },
+  { path: 'turmas/novo', component: TurmaFormComponent },
+  { path: 'turmas/:sku', component: TurmaFormComponent },
+  { path:  'professores', component: ProfessoresPesquisaComponent },
+  { path: 'professores/novo', component: ProfessorFormComponent },
+  { path: 'professor/cpf/:cpf', component: ProfessorFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];

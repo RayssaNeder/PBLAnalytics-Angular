@@ -1,10 +1,12 @@
+import { Turma } from './../core/model';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core'
-import { Pessoa } from './../core/model';
 
-export class PessoaFiltro {
+
+export class TurmaFiltro {
   codigo: number;
+  sku: string;
   nome: string;
   cpf: string;
   telefone: string
@@ -15,31 +17,15 @@ export class PessoaFiltro {
 
 
 @Injectable()
-export class PessoaService {
+export class TurmaService {
 
-
-  buscarPorCpf(cpf: String): Promise<Pessoa> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YW5ndWxhcjpyb290');
-
-    return this.http.get<Pessoa>(`${this.pessoaUrl}/cpf/${cpf}`, { headers })
-      .toPromise()
-      .then(response => {
-        const pessoa = response;
-
-        // this.converterStringsParaDatas([lancamento]);
-
-        return pessoa;
-      });
-  }
-
-  pessoaUrl = 'http://localhost:8092/pessoas';
+  turmaUrl = 'http://localhost:8092/turmas';
 
 
   constructor(private http: HttpClient) { }
 
 
-  pesquisar(filtro: PessoaFiltro): Promise<any> {
+  pesquisar(filtro: TurmaFiltro): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
     let params = new HttpParams()
@@ -54,12 +40,12 @@ export class PessoaService {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoaUrl}`, { headers, params })
+    return this.http.get(`${this.turmaUrl}`, { headers, params })
       .toPromise()
       .then(response => {
-        const pessoas = response;
+        const turmas = response;
         const resultado = {
-          pessoas,
+          turmas,
           total: response['totalElements']
         };
 
@@ -72,12 +58,12 @@ export class PessoaService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.delete(`${this.pessoaUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.turmaUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
   }
 
-  adicionar(pessoa: Pessoa): Promise<Pessoa> {
+  adicionar(turma: Turma): Promise<Turma> {
 
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290')
@@ -85,38 +71,38 @@ export class PessoaService {
 
 
 
-    return this.http.post<Pessoa>(this.pessoaUrl, pessoa, { headers })
+    return this.http.post<Turma>(this.turmaUrl, turma, { headers })
       .toPromise();
   }
 
-  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+  buscarPorCodigo(codigo: string): Promise<Turma> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.get<Pessoa>(`${this.pessoaUrl}/${codigo}`, { headers })
+    return this.http.get<Turma>(`${this.turmaUrl}/${codigo}`, { headers })
       .toPromise()
       .then(response => {
-        const pessoa = response;
+        const turma = response;
 
         // this.converterStringsParaDatas([lancamento]);
 
-        return pessoa;
+        return turma;
       });
   }
 
-  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+  atualizar(turma: Turma): Promise<Turma> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YW5ndWxhcjpyb290')
       .append('Content-Type', 'application/json');
 
-    return this.http.put<Pessoa>(`${this.pessoaUrl}/${pessoa.codigo}`,pessoa, { headers })
+    return this.http.put<Turma>(`${this.turmaUrl}/${turma.codigo}`,turma, { headers })
       .toPromise()
       .then(response => {
-        const pessoaAlterado = response;
+        const turmaAlterado = response;
 
-        // this.converterStringsParaDatas([pessoaAlterado]);
+        // this.converterStringsParaDatas([turmaAlterado]);
 
-        return pessoaAlterado;
+        return turmaAlterado;
       });
   }
 
@@ -124,7 +110,7 @@ export class PessoaService {
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YW5ndWxhcjpyb290');
 
-    return this.http.get(this.pessoaUrl, { headers })
+    return this.http.get(this.turmaUrl, { headers })
       .toPromise()
       .then(response => response);
   }

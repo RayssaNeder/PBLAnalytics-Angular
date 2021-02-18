@@ -1,0 +1,52 @@
+<div class="container">
+
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+
+      <div class="p-col-12">
+        <h1>Nova Turma</h1>
+      </div>
+
+
+      <div class="p-col-12 p-md-6 p-lg-2 p-fluid">
+          <label>Código</label>
+          <input pInputText type="text" name="sku"
+           #sku="ngModel" required minlength="5" [(ngModel)]="turma.sku">
+
+        <app-message [control]="sku" error="required"
+          text="Informe o sku"></app-message>
+        <app-message [control]="sku" error="minlength"
+          text="Mínimo de {{ sku.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-6 p-fluid">
+        <label>Data Início</label>
+        <input pInputText type="text" name="dataInicio"
+           #dataInicio="ngModel" required minlength="11" [(ngModel)]="turma.dataInicio">
+
+        <app-message [control]="dataInicio" error="required"
+          text="Informe o início"></app-message>
+
+      </div>
+
+      <div class="p-col-12 p-md-6 p-lg-6 p-fluid">
+        <label>Data Fim</label>
+        <input pInputText type="text" name="dataConclusao"
+           #dataConclusao="ngModel" required minlength="11" [(ngModel)]="turma.dataConclusao">
+
+        <app-message [control]="dataConclusao" error="required"
+          text="Informe o cpf"></app-message>
+
+      </div>
+
+
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Novo" class="ui-button-info"></button>
+
+      <a routerLink="/turmas">Voltar para a pesquisa</a>
+    </div>
+
+  </form>
+
+</div>

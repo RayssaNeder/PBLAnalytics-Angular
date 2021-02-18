@@ -30,15 +30,10 @@
           text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
       </div>
 
-      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
-        <h5>Cursos</h5>
-        <p-listbox [options]="cursos" [(ngModel)]="disciplina.cursos"[metaKeySelection]="false" [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="curso.nome" [listStyle]="{'max-height':'250px'}" [style]="{'width':'15rem'}" name="cursos">
-          <ng-template let-curso pTemplate="curso">
-            <div class="country-item">
-                <div>{{curso.nome}}</div>
-            </div>
-        </ng-template>
-        </p-listbox>
+      <div class="p-col-12 p-md-6 p-md-6 p-fluid">
+        <label>Curso</label>
+        <p-dropdown [options]="cursos" optionLabel="nome" name="curso" placeholder="Selecione" [(ngModel)]="disciplina.curso"
+          #curso></p-dropdown>
       </div>
 
 

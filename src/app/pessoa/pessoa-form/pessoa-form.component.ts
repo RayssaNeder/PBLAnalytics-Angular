@@ -23,7 +23,7 @@ class Pessoa{
 })
 export class PessoaFormComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
-  sexo = [
+  sexos = [
     { label: 'Feminino', value: 'F'},
     { label:  'Masculino', value: 'M' }
   ];

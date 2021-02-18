@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
-  { path: 'cursos/:sku',
+  { path: 'cursos/:codigo',
     component: CursoFormComponent,
     canActivate: [AuthGuard]
   }

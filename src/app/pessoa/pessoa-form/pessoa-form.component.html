@@ -54,7 +54,7 @@
           text="Mínimo de {{ email.errors?.minlength?.requiredLength }} caracteres"></app-message>
       </div>
 
-      <div class="p-col-12 p-md-6 p-lg-6 p-fluid">
+      <!-- <div class="p-col-12 p-md-6 p-lg-6 p-fluid">
         <label>Sexo</label>
         <input pInputText type="text" name="sexo"
            #sexo="ngModel" required minlength="1" [(ngModel)]="pessoa.sexo">
@@ -63,6 +63,12 @@
           text="Informe o sexo"></app-message>
         <app-message [control]="sexo" error="minlength"
           text="Mínimo de {{ sexo.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div> -->
+
+      <div class="p-col-12 p-md-6 p-md-6 p-fluid">
+        <label>Sexo</label>
+        <p-dropdown [options]="sexos" name="sexo" placeholder="Selecione" [(ngModel)]="pessoa.sexo"
+          #sexo></p-dropdown>
       </div>
 
       <div class="p-col-12 p-md-6 p-lg-4 p-fluid">

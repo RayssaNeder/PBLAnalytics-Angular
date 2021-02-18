@@ -1,3 +1,7 @@
+import { ProfessorService } from './professor/professor.service';
+import { ProfessorModule } from './professor/professor.module';
+import { TurmaService } from './turma/turma.service';
+import { TurmaModule } from './turma/turma.module';
 import { PessoaService } from './pessoa/pessoa.service';
 import { PessoaModule } from './pessoa/pessoa.module';
 import { DisciplinaService } from './disciplina/disciplina.service';
@@ -36,6 +40,8 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PessoasPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
 import { PessoaFormComponent } from './pessoa/pessoa-form/pessoa-form.component';
+import { ProfessorFormComponent } from './professor/professor-form/professor-form.component';
+import { ProfessoresPesquisaComponent } from './professor/professores-pesquisa/professores-pesquisa.component';
 
 
 @NgModule({
@@ -60,13 +66,15 @@ import { PessoaFormComponent } from './pessoa/pessoa-form/pessoa-form.component'
     CoreModule,
 
     CursoModule,
+    TurmaModule,
     PessoaModule,
     SegurancaModule,
     AlunoModule,
+    ProfessorModule,
     SharedModule
 
   ],
-  providers: [CursoService, DisciplinaService, PessoaService],
+  providers: [CursoService, DisciplinaService, PessoaService, TurmaService, ProfessorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

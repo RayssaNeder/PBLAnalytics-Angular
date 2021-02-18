@@ -5,7 +5,7 @@
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
         <div class="p-col-12">
-          <h1>Cursos</h1>
+          <h1>Turmas</h1>
         </div>
 
         <div class="p-col-12 p-fluid">
@@ -32,7 +32,7 @@
 
   <div class="p-grid">
     <div class="p-col-12">
-      <p-table [value]="cursos" [responsive]="true"
+      <p-table [value]="turmas" [responsive]="true"
           [paginator]="true" [rows]="filtro.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)"
@@ -40,7 +40,7 @@
         <ng-template pTemplate="emptymessage">
           <tr>
             <td colspan="6">
-              Nenhum curso encontrado
+              Nenhum turma encontrado
             </td>
           </tr>
         </ng-template>
@@ -53,39 +53,39 @@
             <th class="col-acoes-header"></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-curso>
+        <ng-template pTemplate="body" let-turma>
           <tr>
             <td>
               <span class="p-column-title">Código</span>
-              {{ curso.sku }}
+              {{ turma.sku }}
             </td>
             <td>
               <span class="p-column-title">Nome</span>
-              {{ curso.nome }}
+              {{ turma.nome }}
             </td>
             <td class="col-data">
               <span class="p-column-title">Instituição</span>
-              {{ curso.instituicao.nome }}
+              {{ turma.instituicao.nome }}
             </td>
             <td class="col-data">
               <span class="p-column-title">Sexo</span>
-              {{ curso.grau == 'B' ? 'Bacharelado' : 'Licenciatura' }}
+              {{ turma.grau == 'B' ? 'Bacharelado' : 'Licenciatura' }}
             </td>
             <td class="col-acoes">
-              <span class="p-column-title"></span>
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                [routerLink]="['/cursos', curso.sku]"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(curso)"></button>
+                  <span class="p-column-title"></span>
+                  <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                    [routerLink]="['/turmas', turma.sku]"></a>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                    (click)="confirmarExclusao(turma)"></button>
 
-        </td>
+            </td>
           </tr>
         </ng-template>
       </p-table>
     </div>
 
     <div class="p-col-12">
-      <a pButton label="Novo Curso" routerLink="/cursos/novo"></a>
+      <a pButton label="Nova Turma" routerLink="/turmas/nova"></a>
     </div>
 
   </div>

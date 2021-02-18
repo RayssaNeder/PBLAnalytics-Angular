@@ -1,0 +1,42 @@
+<div class="container">
+
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+
+      <div class="p-col-12">
+        <h1>Novo professor</h1>
+      </div>
+
+
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>CPF</label>
+        <input pInputText type="text" name="cpf"
+           #cpf="ngModel" required minlength="11" [(ngModel)]="professor.pessoa.cpf">
+
+
+      </div>
+
+      <button pButton type="submit" label="Buscar"  (click)="buscaPessoa(professor.pessoa.cpf)"></button>
+
+
+      <div class="p-col-12 p-md-6 p-lg-10 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          #nome="ngModel" required minlength="5" [(ngModel)]="professor.pessoa.nome">
+
+      </div>
+
+
+
+
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Novo" class="ui-button-info"></button>
+
+      <a routerLink="/professors">Voltar para a pesquisa</a>
+    </div>
+
+  </form>
+
+</div>

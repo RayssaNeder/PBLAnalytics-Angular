@@ -7,26 +7,25 @@ import { NgModule } from '@angular/core';
 
 
 
-const cursosRoutes: Routes = [
-  {
-    path: '',
-    component: CursosPesquisaComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: [
-        'uma_authorization'
-      ]
-    }
-  },
+const routes: Routes = [
+  { path: 'cursos',
+  component: CursosPesquisaComponent,
+  canActivate: [AuthGuard]
+},
+{ path: 'cursos/novo',
+component: CursoFormComponent,
+canActivate: [AuthGuard]
+},
 
-
-  { path:  'novo', component: CursoFormComponent, canActivate: [AuthGuard] },
-  { path: 'visualizar/:sku', component: CursoFormComponent, canActivate: [AuthGuard] },
+{ path: 'cursos/:sku',
+component: CursoFormComponent,
+canActivate: [AuthGuard]
+}
 ];
   @NgModule({
-    imports: [RouterModule.forChild(cursosRoutes)],
+    imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
   })
   export class CursosRoutingModule{}
 
-]
+

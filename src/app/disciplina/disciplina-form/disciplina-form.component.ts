@@ -13,7 +13,7 @@ class Disciplina{
   codigo: number;
   sku: string;
   nome: string;
-  cursos: Curso[];
+  curso: Curso = new Curso();
 }
 
 

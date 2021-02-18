@@ -12,6 +12,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {ListboxModule} from 'primeng/listbox';
 import { MessageComponent } from './message/message.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,9 +26,11 @@ import { MessageComponent } from './message/message.component';
     CalendarModule,
     SelectButtonModule,
 
+
+
   ],
   declarations: [MessageComponent],
   exports: [MessageComponent, ListboxModule, DropdownModule,  FormsModule,
-    InputTextModule, TableModule, TooltipModule, SelectButtonModule]
+    InputTextModule, TableModule, TooltipModule, SelectButtonModule, ButtonModule]
 })
 export class SharedModule { }

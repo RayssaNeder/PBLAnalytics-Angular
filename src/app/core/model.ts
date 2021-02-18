@@ -17,11 +17,19 @@ export class Curso {
 
 }
 
+export class Turma {
+  codigo: number;
+  sku: string;
+  dataInicio: Date;
+  dataConclusao: Date;
+
+}
+
 export class Disciplina {
   codigo: number;
   sku: string;
   nome: string;
-  cursos: Curso[];
+  curso = new Curso();
 
 }
 
@@ -33,4 +41,10 @@ export class Pessoa{
   telefone: string;
   sexo: string;
   ocupacao: string;
+  }
+
+  export class Professor {
+    codigo: number;
+    pessoa = new Pessoa();
+
   }

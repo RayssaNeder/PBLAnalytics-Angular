@@ -20,6 +20,11 @@ canActivate: [AuthGuard]
 { path: 'pessoas/:codigo',
 component: PessoaFormComponent,
 canActivate: [AuthGuard]
+},
+
+{ path: 'professores/:cpf',
+component: PessoaFormComponent,
+canActivate: [AuthGuard]
 }
 ];
 
